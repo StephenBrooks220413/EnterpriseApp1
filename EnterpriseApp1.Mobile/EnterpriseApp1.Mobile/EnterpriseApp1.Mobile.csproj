@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <Import Project="..\..\..\SolutionItems\build.props"/>
+
+  <ItemGroup>
+    <Folder Include="Assets\"/>
+    <Folder Include="Models\"/>
+    <Folder Include="ViewModels\"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\**\*.svg"/>
+    <EmbeddedResource Include="Assets\**\*.ttf"/>
+
+    <!--SharedImage(jpg,jpeg,png) This image copied to corresponding Folder-->
+    <SharedImage Include="Assets\**\*.jpg"/>
+    <SharedImage Include="Assets\**\*.jpeg"/>
+    <SharedImage Include="Assets\**\*.png"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\**\*.ttf"/>
+    <None Remove="Assets\**\*.svg"/>
+    <None Remove="Assets\**\*.png"/>
+    <None Remove="Assets\**\*.jpg"/>
+    <None Remove="Assets\**\*.jpeg"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="**\*.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2"/>
+    <PackageReference Include="Resizetizer.NT" Version="0.1.0"/>
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1269"/>
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.4.0"/>
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.4.0"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.6"/>
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.1.0.714"/>
+    <PackageReference Include="Xamarin.Plugin.SharedTransitions" Version="2.2.0"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\EnterpriseApp1.Core\EnterpriseApp1.Core\EnterpriseApp1.Core.csproj"/>
+  </ItemGroup>
+
+</Project>
